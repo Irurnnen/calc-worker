@@ -1,0 +1,13 @@
+services:
+  calc-worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: calc-worker
+    pull_policy: always
+    restart: on-failure
+    ports:
+      - "1234:1234"
+    environment:
+    - COMPUTING_POWER=${COMPUTING_POWER}
+    - ORCHESTRATOR_URL=${ORCHESTRATOR_URL}
